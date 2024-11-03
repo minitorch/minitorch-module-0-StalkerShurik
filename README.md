@@ -13,7 +13,7 @@
 
 <h1>Example2:</h2>
 
-<h2>Dataset:Spiral</h2>
+<h2>Dataset:Spiral, 80pts</h2>
 
 <h2>Model: hs=100, lr=0.001, epochs=400</h2>
 
