@@ -51,8 +51,10 @@ class Module:
         """
         parameters = list(self._parameters.items())
         for module_name, module in self._modules.items():
-            parameters.extend([(module_name + "." + x, y) for (x,y) in module.named_parameters()])
-        
+            parameters.extend(
+                [(module_name + "." + x, y) for (x, y) in module.named_parameters()]
+            )
+
         return parameters
 
     def parameters(self) -> Sequence[Parameter]:
@@ -60,8 +62,8 @@ class Module:
         parameters = list(self._parameters.values())
         for module_name, module in self._modules.items():
             parameters.extend(module.parameters())
-        
-        return parameters        
+
+        return parameters
 
     def add_parameter(self, k: str, v: Any) -> Parameter:
         """Manually add a parameter. Useful helper for scalar parameters.
@@ -97,6 +99,7 @@ class Module:
         return None
 
     def __call__(self, *args: Any, **kwargs: Any) -> Any:
+        """Activates forward"""
         return self.forward(*args, **kwargs)
 
     def __repr__(self) -> str:
