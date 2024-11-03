@@ -11,7 +11,7 @@
 
 <h2>Conclusion: Quite good model, however we can visually observe overfitting  </h2>
 
-<h1>Example1:</h2>
+<h1>Example2:</h2>
 
 <h2>Dataset:Spiral</h2>
 
