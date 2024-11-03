@@ -75,11 +75,11 @@ def circle(N: int) -> Graph:
 def spiral(N: int) -> Graph:
     """Creates spiral dataset"""
 
-    def x(t: int) -> int:
+    def x(t: float) -> float:
         """Format x"""
         return t * math.cos(t) / 20.0
 
-    def y(t: int) -> int:
+    def y(t: float) -> float:
         """Format y"""
         return t * math.sin(t) / 20.0
 
