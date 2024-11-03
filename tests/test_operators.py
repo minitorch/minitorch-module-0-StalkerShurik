@@ -24,7 +24,7 @@ from minitorch.operators import (
     relu_back,
     sigmoid,
     exp,
-    log
+    log,
 )
 
 from .strategies import assert_close, small_floats
@@ -99,6 +99,7 @@ def test_eq(a: float) -> None:
 # that ensure that your operators obey basic
 # mathematical rules.
 
+
 @pytest.mark.task0_2
 @given(small_floats)
 def test_sigmoid(a: float) -> None:
@@ -112,15 +113,17 @@ def test_sigmoid(a: float) -> None:
     assert sigmoid(a) <= 1
     assert_close(1 - sigmoid(a), sigmoid(-a))
     assert_close(sigmoid(0.0), 0.5)
-    assert sigmoid(a) <= sigmoid(a + 0.1) #use <= due to numeric phenomenon when a ~ 100
+    assert sigmoid(a) <= sigmoid(
+        a + 0.1
+    )  # use <= due to numeric phenomenon when a ~ 100
 
 
 @pytest.mark.task0_2
 @given(small_floats, small_floats, small_floats)
 def test_transitive(a: float, b: float, c: float) -> None:
     "Test the transitive property of less-than (a < b and b < c implies a < c)"
-    if lt(a,b) * lt(b,c):
-        assert(lt(a,c))
+    if lt(a, b) * lt(b, c):
+        assert lt(a, c)
 
 
 @pytest.mark.task0_2
@@ -154,7 +157,6 @@ def test_other(a: float) -> None:
         assert_close(a, log(exp(a)))
 
 
-
 # ## Task 0.3  - Higher-order functions
 
 # These tests check that your higher-order functions obey basic
@@ -179,7 +181,10 @@ def test_sum_distribute(ls1: List[float], ls2: List[float]) -> None:
     """Write a test that ensures that the sum of `ls1` plus the sum of `ls2`
     is the same as the sum of each element of `ls1` plus each element of `ls2`.
     """
-    assert_close(minitorch.operators.sum(ls1) +  minitorch.operators.sum(ls2), minitorch.operators.sum(addLists(ls1, ls2)))
+    assert_close(
+        minitorch.operators.sum(ls1) + minitorch.operators.sum(ls2),
+        minitorch.operators.sum(addLists(ls1, ls2)),
+    )
 
 
 @pytest.mark.task0_3
